@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Serah254 AwwardsApp</h1>
+    <p class="lead">In this App, Users are supposed to register and sign up and then submit 
+        their sites. <br> After that, the sites are to be rated down plus also, am gonna implement 
+        the restful api.
+    </p>
+    </div>
+    <div class="container">
+        <div class="d-flex flex-column">
+                <h3>Registered Users.</h3>
+                {% for account in accounts %}
+                <p>{{account}}</p>
+                {% endfor%}
+        </div>
+    </div>
+  
+
+
+{% endblock content%}
