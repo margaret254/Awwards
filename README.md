@@ -12,15 +12,10 @@ This is an app that allows users to post reviews on other peoples projects.
 
 
 ## Behavior Driven Development
-| Behavior            | Input                         | Output                        | 
-| ------------------- | ----------------------------- | ----------------------------- |
-| User visits the app and gets redirected to the login page  | User logs in | Directed to the home page where they see posted photos | 
-If user has no account, they click on `sign up` | User signs up | User is redirected to the log in page |
-|  Homepage loads | Click `profile` | User's profile appears | 
-| Homepage loads | Click `upload image` icon | User's redirected to a page where they can upload an image | 
-| Homepage loads | Click `settings` icon | A modal appears where one can change their password or logout | 
-| Homepage loads | User inputs in the search form and presses enter | Searched results show |
-
+1. When the user loads the page,he/she sees the uploaded sites
+2. If the user wants to upload a site, he/she should first register
+3. Then click on the upload site and fill in the form.
+4. Then, the user should click on the logout to log out from the page.
 
 ## Setup/Installation requirements
 1.Clone or download and unzip the repository from github,https://github.com/margaret254/Awards
