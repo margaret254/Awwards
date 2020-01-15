@@ -1,0 +1,42 @@
+<style type="text/css">
+	.card{
+		max-width: 700px;
+	}
+	.card-body{
+		padding: 20px;
+	}
+</style>
+
+<div class="container">
+	<div class="row">
+
+		<!-- Blog Post -->
+		<div class="card m-auto">
+			<a href="{% url 'award:detail' post.slug %}">
+				<img class="card-img-top" src="{{award_post.image.url}}">
+			</a>
+			
+			<div class="card-body mt-2 mb-2">
+				<a href="{% url 'award:detail' post.slug %}">
+					<h2 class="card-title">{{award_post.title}}</h2>
+				</a>
+				<p class="card-text">{{award_post.body|safe|truncatechars:180}}</p>
+				{% if award_post.author == request.user %}
+					<a href="{% url 'award:edit' award_post.slug %}" class="btn btn-primary">Update</a>
+				{% endif %}
+			</div>
+			<div class="card-footer text-muted">
+			  Updated on {{award_post.date_updated}} by {{award_post.author}}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
