@@ -1,13 +1,4 @@
-<style type="text/css">
-	.card{
-		max-width: 700px;
-		width: 100%;
-	}
-	.card-body{
-		padding: 20px;
-	}
-</style>
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 {% if award_post %}
 <div class="container">
 	<div class="row">
@@ -24,9 +15,16 @@
 				{% if award_post.author == request.user %}
 					<a href="{% url 'award:edit' award_post.slug %}" class="btn btn-primary">Update</a>
 				{% endif %}
+				<p>Updated on {{award_post.date_updated}} by {{award_post.author}}</p>
 			</div>
 			<div class="card-footer text-muted">
-			  Updated on {{award_post.date_updated}} by {{award_post.author}}
+			  <div class="rating">
+					<input type="radio" name="star" id="star1" ><label for="star1"></label>
+					<input type="radio" name="star" id="star2" ><label for="star2"></label>
+					<input type="radio" name="star" id="star3" ><label for="star3"></label>
+					<input type="radio" name="star" id="star4" ><label for="star4"></label>
+					<input type="radio" name="star" id="star5" ><label for="star5"></label>
+			  </div>
 			</div>
 		</div>
 	</div>

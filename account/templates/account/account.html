@@ -82,6 +82,8 @@
         {% for award in award_posts %}
         <a href="{% url 'award:detail' award.slug %}" style="text-decoration:none;">
           <li class="list-group-item">{{award.title}}</li>
+          <li class="list-group-item">{{award.body}}</li>
+          <li class="list-group-item">{{award.image_url}}</li>
         </a>
         {% endfor %}
       </ul>

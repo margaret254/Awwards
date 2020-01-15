@@ -9,8 +9,8 @@ from django.db.models.signals import post_delete
 from django.dispatch import receiver
 
 def upload_location(instance,filename):
-    file_path = 'award/{author_id}/{title}-{filename}'.format(
-        author_id=str(instance.author_id),title=str(instance.title),filename=filename
+    file_path = 'award/{author_id}/{project_link}-{filename}'.format(
+        author_id=str(instance.author_id),project_link=str(instance.project_link),filename=filename
     )
     return file_path
 
@@ -18,6 +18,7 @@ class AwardPost(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     body = models.TextField(max_length=500, null=False, blank=False)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True)
+    project_link = models.CharField(max_length=250)
     date_published = models.DateTimeField(auto_now_add=True, verbose_name="date published")
     date_updated = models.DateTimeField(auto_now=True, verbose_name="date updated")
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
