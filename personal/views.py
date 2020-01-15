@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from account.models import Account
+from operator import attrgetter
+from award.models import AwardPost
 
 # Create your views here.
 
 def home_screen_view(request):
 
     context = { }
-    accounts = Account.objects.all()
-    context['accounts'] = accounts
+    award_posts = sorted(AwardPost.objects.all(), key=attrgetter('date_updated'), reverse=True)
+    context['award_posts'] = award_posts
     
     return render(request, "personal/home.html",context)

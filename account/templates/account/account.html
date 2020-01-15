@@ -34,6 +34,11 @@
   .h3{
     text-align: center;
   }
+  .award-posts{
+    max-width: 500px;
+    width:100%;
+    margin:auto;
+  }
 </style>
 
 
@@ -67,6 +72,25 @@
   <button class="btn btn-lg btn-primary btn-block" type="submit">Save changes</button>
 
 </form>
+
+<div class="container mt-4 p-4">
+  <div class="row">
+    <div class="award-posts">
+      <h3 class="mb-3 font-weight-normal">Your Uploads</h3>
+      {% if award_posts %}
+      <ul>
+        {% for award in award_posts %}
+        <a href="{% url 'award:detail' award.slug %}" style="text-decoration:none;">
+          <li class="list-group-item">{{award}}</li>
+        </a>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p>You have no uploaded sites yet. Upload your site here<a href="{% url 'award:create'%}"></a></p>
+      {% endif%}
+    </div>
+  </div>
+</div>
 
 
 {% endblock content %}
