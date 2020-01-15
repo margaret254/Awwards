@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404
+from django.db.models import Q
 from award.models import AwardPost
 from award.forms import CreateAwardPostForm,UpdateAwardPostForm
 from account.models import Account
@@ -57,3 +58,15 @@ def edit_award_view(request, slug):
 	context['form'] = form
 
 	return render(request, 'award/edit_award.html', context)
+
+def get_award_queryset(query=None):
+	queryset = []
+	queries = query.split(" ")
+	for q in queries:
+		posts = AwardPost.objects.filter(
+				Q(title__icontains=q) | 
+				Q(body__icontains=q)
+			).distinct()
+		for post in posts:
+			queryset.append(post)
+	return list(set(queryset))
