@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login, authenticate, logout
 from account.forms import RegistrationForm,AccountAuthenticationForm,AccountUpdateForm
 
+from award.models import AwardPost
+
 # Create your views here.
 def registration_view(request):
     context = {}
@@ -76,8 +78,14 @@ def account_view(request):
             }
         )
     context['account_form'] = form
+
+    award_posts = AwardPost.objects.filter(author=request.user)
+    context['award_posts'] = award_posts
     return render(request, 'account/account.html',context)
     
+
+def must_authenticate_view(request):
+    return render(request, 'account/must_authenticate.html', {})
 
 
 
