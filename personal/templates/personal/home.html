@@ -16,7 +16,7 @@
 		}
 	}
 
-	.blog-post-container{
+	.award-post-container{
 		margin-bottom: 20px;
 		width: 100%;
 	}
@@ -36,6 +36,9 @@
 		font-size: 17px;
 	}
 </style>
+
+
+<!-- main content -->
 <div class="container">
 	<div class="row">
 
@@ -45,28 +48,33 @@
 			<!-- Top 'create post' bar -->
 			<div class="d-lg-none mb-3">
 				<div class="card m-auto d-flex flex-column p-3">
-					<p class="lead"> This is an application where your are supposed to upload your site and get reviews based on,<br> Design, Usability and Content.</p>
+					<p class="lead">This is an application where you upload your applications and get reviewed.</p>
 					<p class="m-auto"><a class="btn btn-primary" href="{% url 'award:create' %}">Upload Site</a></p>
 				</div>
 			</div>
 			<!-- end Top 'create post' bar -->
 
-			<!-- Award posts-->
-			{% for post in award_posts %}
-				<div class="blog-post-container">
-					{% include 'award/snippets/award_post.html' with award_post=post %}
+			<!-- posts-->
+			{% if award_posts %}
+				{% for post in award_posts %}
+					<div class="award-post-container">
+						{% include 'award/snippets/award_post.html' with award_post=post %}
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="award-post-container">
+					{% include 'award/snippets/award_post.html' with query=query %}
 				</div>
-			{% endfor %}
-			<!-- End Award posts-->
+			{% endif %}
+			<!-- End posts-->
 		</div>
-		<!-- end feed -->
 
 
 		<!-- Right 'create post' column  -->
 		<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
 
 			<div class="card create-post-bar d-flex flex-column p-3">
-				<p class="lead">This is an application where your are supposed to upload your site and get reviews based on,<br> Design, Usability and Content.</p>
+				<p class="lead">This is an application where you upload your applications and get reviewed.</p>
 				<p class="m-auto"><a class="btn btn-primary" href="{% url 'award:create' %}">Upload Site</a></p>
 			</div>
 		
@@ -77,4 +85,3 @@
 </div>
 
 {% endblock content %}
-
