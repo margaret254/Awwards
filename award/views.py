@@ -6,22 +6,23 @@ from account.models import Account
 
 # Create your views here.
 def create_award_view(request):
-    context = {}
-
     user = request.user
     if not user.is_authenticated:
         return redirect('must_authenticate')
-
-    form = CreateAwardPostForm(request.POST or None, request.FILES or None)
+    form = CreateAwardPostForm(request.POST,request.FILES)
+	
     if form.is_valid():
         obj = form.save(commit=False)
         author = Account.objects.filter(email=user.email).first()
         obj.author = author
         obj.save()
+		
         form = CreateAwardPostForm()
 
-    context['form'] = form
-
+    context = {
+		"form": form
+	}
+	
     return render(request,"award/create_award.html",context)
 
 def detail_award_view(request,slug):

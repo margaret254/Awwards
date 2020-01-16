@@ -8,15 +8,19 @@
 				<img class="card-img-top" src="{{award_post.image.url}}">
 			</a>
 			<div class="card-body mt-2 mb-2">
-				<a href="{% url 'award:detail' post.slug %}">
+				
 					<h2 class="card-title">{{award_post.title}}</h2>
-				</a>
+				
 				<p class="card-text">{{award_post.body|safe|truncatechars:180}}</p>
 				{% if award_post.author == request.user %}
 					<a href="{% url 'award:edit' award_post.slug %}" class="btn btn-primary">Update</a>
 				{% endif %}
 				<p>Updated on {{award_post.date_updated}} by {{award_post.author}}</p>
 			</div>
+			<div class="card-footer">
+				<a href="{{award_post.project_link}}" class="btn btn-primary">View Site</a>
+			</div>
+
 		</div>
 	</div>
 </div>
