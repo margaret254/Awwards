@@ -25,18 +25,20 @@ This is an app that allows users to post reviews on other peoples projects.
 3. Install dependancies that will create an environment for the app to run pip3 install -r requirements.txt
 4. Create the Database
 - psql
-- CREATE DATABASE instacopy;
+- CREATE DATABASE "Dataase Name";
 
-4. Create .env file and paste paste the following filling where appropriate:
+4. Create .env file and  paste the following filling where appropriate:
 
--SECRET_KEY = '<Secret_key>'
--DBNAME = 'Awward'
--USER = '<Username>'
--PASSWORD = '<password>'
--DEBUG = True
+1.SECRET_KEY = '<Secret_key>'
+2.DBNAME = <DB-Name>
+3.USER = '<Username>'
+4.PASSWORD = '<password>'
+5.DEBUG = True
+
 5. Run initial Migration
--python3.6 manage.py makemigrations instagram
+-python3.6 manage.py makemigrations
 -python3.6 manage.py migrate
+
 6. Run the app
 -python3.6 manage.py runserver
 -Open terminal on localhost:8000
